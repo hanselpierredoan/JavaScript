@@ -1,0 +1,33 @@
+/* Make a ball bounce. */
+var ball = document.createElement('div');
+ball.style.width = '100px';
+ball.style.height = '100px';
+ball.style.backgroundColor = 'red';
+ball.style.borderRadius = '50px';
+ball.style.position = 'absolute';
+ball.style.top = '0px';
+ball.style.left = '0px';
+document.body.appendChild(ball);
+var ballX = 0;
+var ballY = 0;
+var ballSpeedX = 10;
+var ballSpeedY = 10;
+function updateBall() {
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
+  if (ballX > window.innerWidth - 100) {
+    ballSpeedX = -ballSpeedX;
+  }
+  if (ballY > window.innerHeight - 100) {
+    ballSpeedY = -ballSpeedY;
+  }
+  if (ballX < 0) {
+    ballSpeedX = -ballSpeedX;
+  }
+  if (ballY < 0) {
+    ballSpeedY = -ballSpeedY;
+  }
+  ball.style.left = ballX + 'px';
+  ball.style.top = ballY + 'px';
+}
+setInterval(updateBall, 10);
